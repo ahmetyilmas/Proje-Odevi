@@ -29,26 +29,27 @@ void main()
     while (cikis == 1)
     {
         int sayilar[5];
-        FILE *fp;
+        FILE *fp;   
         
         srand(time(NULL));
-        int rastgele_sayi = rand()%5;
+        int rastgele_sayi = rand()%5;   //  Diziden rastgele bir eleman secmek icin kullanilacak degisken
 
         fp = fopen("kolay_sayilar.txt","r");
     
         for (int i = 0; i < 5; i++)
         {
-            fread(&sayilar[i],sizeof(int),1,fp);
+            fread(&sayilar[i],sizeof(int),1,fp);    //  Dosyadaki sayilarin sayilar dizisine aktarilmasi
         }
 
-        int kolay_sayi = sayilar[rastgele_sayi];
+        int kolay_sayi = sayilar[rastgele_sayi];    //  Diziden rastgele eleman secilen bolum
         fclose(fp);
     
         int kolay_sayi_birler,kolay_sayi_onlar,kolay_sayi_yuzler;
 
-        kolay_sayi_birler = basamak_bul(kolay_sayi,1);
+        kolay_sayi_birler = basamak_bul(kolay_sayi,1);      //  Sayinin basamaklarinin hesaplanmasi
         kolay_sayi_onlar = basamak_bul(kolay_sayi,10);
         kolay_sayi_yuzler = basamak_bul(kolay_sayi,100);
+        
         fp = fopen("orta_sayilar.txt","r");
     
         for (int i = 0; i < 5; i++)
@@ -92,16 +93,16 @@ void main()
         {
         case 'X':
         case 'x':
-            cikis--;
+            cikis--;    //  X'e basildiysa While dongusunu sonladindirmak icin cikis degiskeni 1 eksiltilerek 0 olur
             break;
         case 'K':
         case 'k':
             printf("\nBilgisayarin sayisi uc basamaklidir");
-            for (int k = 6; k >= 0; k--)
+            for (int k = 6; k >= 0; k--)        //  Tahmin hakki 6 oldugu icin dongu 6dan baslar 0'a kadar azalir
             {
                 int tahmin,tahmin_birler,tahmin_onlar,tahmin_yuzler;
                 
-                if (k == 0)
+                if (k == 0)                 
                 {
                     printf("\nTahmin hakkiniz kalmadi.");
                     printf("\nYeniden oynamak istiyorsaniz Enter, Oyundan cikmak icin 'X' basiniz.\n");
@@ -117,7 +118,7 @@ void main()
                 }
                 
                 printf("\nTahmin Hakkiniz:%d",k);
-                printf("\nTahmininiz:\n");
+                printf("\nTahmininiz:\n");                  //  Oyuncudan tahmin alindigi ve basamaklarinin hesaplandigi bolum
                 scanf("%d",&tahmin);
                 tahmin_birler = basamak_bul(tahmin,1);
                 tahmin_onlar = basamak_bul(tahmin,10);
