@@ -24,67 +24,66 @@ void main()
     printf("\nEger girdiginiz sayinin altinda 1 rakami varsa bilgisayarin sayisinda o rakam vardir ve basamagi dogrudur.");
     printf("\nEger girdiginiz sayinin altinda 2 rakami varsa bilgisayarin sayisinda o rakam vardir fakat basamagi dogru degildir.");
 
-    
-    int sayilar[5];
-    FILE *fp;
-
-    srand(time(NULL));
-    int rastgele_sayi = rand()%5;
-
-    fp = fopen("kolay_sayilar.txt","r");
-    
-    for (int i = 0; i < 5; i++)
-    {
-        fread(&sayilar[i],sizeof(int),1,fp);
-    }
-
-    int kolay_sayi = sayilar[rastgele_sayi];
-    fclose(fp);
-    
-    int kolay_sayi_birler,kolay_sayi_onlar,kolay_sayi_yuzler;
-
-    kolay_sayi_birler = basamak_bul(kolay_sayi,1);
-    kolay_sayi_onlar = basamak_bul(kolay_sayi,10);
-    kolay_sayi_yuzler = basamak_bul(kolay_sayi,100);
-    
-    fp = fopen("orta_sayilar.txt","r");
-    
-    for (int i = 0; i < 5; i++)
-    {
-        fread(&sayilar[i],sizeof(int),1,fp);
-    }
-    
-    int orta_sayi = sayilar[rastgele_sayi];
-    fclose(fp);
-    
-    int orta_sayi_birler,orta_sayi_onlar,orta_sayi_yuzler,orta_sayi_binler;
-    
-    orta_sayi_birler = basamak_bul(orta_sayi,1);
-    orta_sayi_onlar = basamak_bul(orta_sayi,10);
-    orta_sayi_yuzler = basamak_bul(orta_sayi,100);
-    orta_sayi_binler = basamak_bul(orta_sayi,1000);
-
-    fp = fopen("zor_sayilar.txt","r");
-    
-    for (int i = 0; i < 5; i++)
-    {
-        fread(&sayilar[i],sizeof(int),1,fp);
-    }
-
-    int zor_sayi = sayilar[rastgele_sayi];
-    fclose(fp);
-
-    int zor_sayi_birler,zor_sayi_onlar,zor_sayi_yuzler,zor_sayi_binler,zor_sayi_onbinler;
-
-    zor_sayi_birler = basamak_bul(zor_sayi,1);
-    zor_sayi_onlar = basamak_bul(zor_sayi,10);
-    zor_sayi_yuzler = basamak_bul(zor_sayi,100);
-    zor_sayi_binler = basamak_bul(zor_sayi,1000);
-    zor_sayi_onbinler = basamak_bul(zor_sayi,10000);
 
     char cikis = 1;
     while (cikis == 1)
     {
+        int sayilar[5];
+        FILE *fp;
+        
+        srand(time(NULL));
+        int rastgele_sayi = rand()%5;
+
+        fp = fopen("kolay_sayilar.txt","r");
+    
+        for (int i = 0; i < 5; i++)
+        {
+            fread(&sayilar[i],sizeof(int),1,fp);
+        }
+
+        int kolay_sayi = sayilar[rastgele_sayi];
+        fclose(fp);
+    
+        int kolay_sayi_birler,kolay_sayi_onlar,kolay_sayi_yuzler;
+
+        kolay_sayi_birler = basamak_bul(kolay_sayi,1);
+        kolay_sayi_onlar = basamak_bul(kolay_sayi,10);
+        kolay_sayi_yuzler = basamak_bul(kolay_sayi,100);
+        fp = fopen("orta_sayilar.txt","r");
+    
+        for (int i = 0; i < 5; i++)
+        {
+            fread(&sayilar[i],sizeof(int),1,fp);
+        }
+    
+        int orta_sayi = sayilar[rastgele_sayi];
+        fclose(fp);
+    
+        int orta_sayi_birler,orta_sayi_onlar,orta_sayi_yuzler,orta_sayi_binler;
+    
+        orta_sayi_birler = basamak_bul(orta_sayi,1);
+        orta_sayi_onlar = basamak_bul(orta_sayi,10);
+        orta_sayi_yuzler = basamak_bul(orta_sayi,100);
+        orta_sayi_binler = basamak_bul(orta_sayi,1000);
+
+        fp = fopen("zor_sayilar.txt","r");
+    
+        for (int i = 0; i < 5; i++)
+        {
+            fread(&sayilar[i],sizeof(int),1,fp);
+        }
+
+        int zor_sayi = sayilar[rastgele_sayi];
+        fclose(fp);
+
+        int zor_sayi_birler,zor_sayi_onlar,zor_sayi_yuzler,zor_sayi_binler,zor_sayi_onbinler;
+
+        zor_sayi_birler = basamak_bul(zor_sayi,1);
+        zor_sayi_onlar = basamak_bul(zor_sayi,10);
+        zor_sayi_yuzler = basamak_bul(zor_sayi,100);
+        zor_sayi_binler = basamak_bul(zor_sayi,1000);
+        zor_sayi_onbinler = basamak_bul(zor_sayi,10000);
+
         char zorluk_secimi;
         printf("\n\n****Zorluk Seciniz****");
         printf("\nK-Kolay\nO-Orta\nZ-Zor\nX-Programdan cikis\n");
@@ -511,7 +510,6 @@ void main()
         default:
             printf("\nLutfen belirtilen harflerden birisini giriniz.\n");
             zorluk_secimi = getchar();
-            
             break;
         }
     }
